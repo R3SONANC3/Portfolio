@@ -9,7 +9,7 @@ function Banner() {
     const [isDeleting, setIsDeleting] = useState(false);
     const [text, setText] = useState('');
     const [delta, setDelta] = useState(300 - Math.random() * 100);
-    const toRotate = ["Web Developer", "Web Designer", "UX/UI Designer"];
+    const toRotate = ["Web Developer", "Web Designer"];
     const period = 2000;
 
     useEffect(() => {
@@ -52,9 +52,9 @@ function Banner() {
                             transition={{ duration: 0.8 }}
                         >
                             <span className='tagline'>Welcome to my Portfolio</span>
-                            <h1>{`Hi, I'm `}<span className='highlight'>Web Developer</span></h1>
+                            <h1>{`Hi, I'm `}<span className='highlight'>Jeerapat</span></h1>
                             <h2 className='txt-rotate'>
-                                <span className='wrap'>{text}</span>
+                                <span className='wrap'>{text}<span className='cursor'>&#8203;</span></span>
                             </h2>
                             <p>Passionate about creating beautiful and functional web experiences. I specialize in front-end development and UI/UX design, bringing ideas to life through code and creativity.</p>
                             <motion.button
