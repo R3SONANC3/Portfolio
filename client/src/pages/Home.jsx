@@ -1,17 +1,12 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import Section from '../components/Banner'
-import '../styles/styles.css'
+import React from 'react';
+import Banner from '../components/Banner'
 
 function Home() {
   return (
     <>
-      <Navbar />
-      <div className='body'>
-        <Section />
-      </div>
+    <Banner />
     </>
-  )
+  );
 }
 
 export default Home;
