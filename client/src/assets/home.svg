@@ -1,0 +1,33 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="3" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <style>
+    .text { font: bold 120px 'Arial', sans-serif; fill: url(#grad1); filter: url(#shadow); }
+    .wave { fill: none; stroke: url(#grad1); stroke-width: 4; stroke-linecap: round; }
+    .pulse { fill: url(#grad1); opacity: 0.3; }
+  </style>
+  <!-- พื้นหลัง -->
+  <rect width="100%" height="100%" fill="#f0f8ff" />
+  <!-- คลื่นที่แสดงถึง resonance -->
+  <path class="wave" d="M150 100 Q 200 55, 250 100 T 350 100 T 450 100">
+    <animate attributeName="d" 
+             values="M150 100 Q 200 55, 250 100 T 350 100 T 450 100;
+                     M150 100 Q 200 145, 250 100 T 350 100 T 450 100;
+                     M150 100 Q 200 55, 250 100 T 350 100 T 450 100"
+             dur="4s" repeatCount="indefinite" />
+  </path>
+  <!-- วงกลมแสดง pulse effect -->
+  <circle class="pulse" cx="300" cy="100" r="5">
+    <animate attributeName="r" values="5;40;5" dur="4s" repeatCount="indefinite" />
+    <animate attributeName="opacity" values="0.3;0;0.3" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <!-- ตัวอักษร R -->
+<text x="250" y="150" class="text">R</text>
+</svg>
