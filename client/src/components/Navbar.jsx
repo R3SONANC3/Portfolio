@@ -1,9 +1,16 @@
 import React from "react";
 import logo from "../assets/Logo.png";
+import { useNavigate } from 'react-router-dom';
 import { FaHome, FaUser, FaGraduationCap, FaFolderOpen } from "react-icons/fa";
 import { FaGithub , FaFacebookF, FaInstagram } from "react-icons/fa";
 
 function Navbar() {
+  const navigate = useNavigate();
+
+  const handleConnectClick = () => {
+    navigate('/contact');
+  };
+
   return (
     <nav className="nav-wrapper">
       <div className="nav-content">
@@ -60,8 +67,7 @@ function Navbar() {
               <FaInstagram />
             </a>
           </div>
-
-          <button className="connect-btn">Let's Connect</button>
+          <button className="connect-btn" onClick={handleConnectClick}>Let's Connect</button>
         </ul>
         <button className="nav-menu" onClick={() => {}}>
           <span
