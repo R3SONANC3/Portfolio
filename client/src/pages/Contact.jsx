@@ -20,8 +20,8 @@ const ContactForm = () => {
             <h3>Contact us</h3>
             <p>We're open for any suggestion or just to have a chat</p>
             <p><i className="fa fa-map-marker"></i> Address: 198 West 21th Street, Suite 721 New York NY 10016</p>
-            <p><i className="fa fa-phone"></i> Phone: + 1235 2355 98</p>
-            <p><i className="fa fa-envelope"></i> Email: info@yoursite.com</p>
+            <p><i className="fa fa-phone"></i> Phone: +66 65 608 9783</p>
+            <p><i className="fa fa-envelope"></i> Email: jeerapat5870@gmail.com</p>
             <p><i className="fa fa-globe"></i> Website: yoursite.com</p>
           </div>
         </div>
