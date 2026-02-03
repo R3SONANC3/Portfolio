@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
+import { socialLinks } from '@data/socialLinks'
 
 export default function Home() {
   const [mounted, setMounted] = useState(false)
@@ -13,12 +14,6 @@ export default function Home() {
   useEffect(() => setMounted(true), [])
 
   if (!mounted) return null
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: 'https://github.com/R3SONANC3', color: 'dark:hover:text-cyan-400 hover:text-blue-600' },
-    { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com', color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-    { icon: Mail, label: 'Email', href: 'mailto:jeerapat.kah@gmail.com', color: 'hover:text-red-500 dark:hover:text-red-400' },
-  ]
 
   return (
     <div>

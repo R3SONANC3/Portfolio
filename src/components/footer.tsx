@@ -2,35 +2,15 @@
 
 import Link from 'next/link'
 import { useTheme } from 'next-themes'
-import { FaGithub, FaLinkedin, FaEnvelope, FaArrowUp } from 'react-icons/fa'
+import { FaArrowUp } from 'react-icons/fa'
 import { useEffect, useState } from 'react'
+import { socialLinks } from '@data/socialLinks'
 
 const quickLinks = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   { label: 'Projects', href: '/projects' },
   { label: 'Contact', href: '/contact' },
-]
-
-const socialLinks = [
-  { 
-    icon: FaEnvelope, 
-    href: 'mailto:hello@jeerapat.dev', 
-    label: 'Email',
-    color: 'hover:text-red-500'
-  },
-  { 
-    icon: FaGithub, 
-    href: 'https://github.com/R3SONANC3', 
-    label: 'GitHub',
-    color: 'hover:text-gray-700 dark:hover:text-gray-300'
-  },
-  { 
-    icon: FaLinkedin, 
-    href: 'https://linkedin.com/in/yourprofile', 
-    label: 'LinkedIn',
-    color: 'hover:text-blue-600'
-  },
 ]
 
 export default function Footer() {
