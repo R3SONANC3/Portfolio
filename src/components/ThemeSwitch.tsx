@@ -18,16 +18,22 @@ export default function ThemeSwitch() {
         <button
             aria-label="Toggle Theme"
             onClick={() => setTheme(isDark ? 'light' : 'dark')}
-            className="group relative p-2.5 rounded-xl transition-all duration-300"
+            className={`group relative p-2.5 rounded-xl transition-all duration-300`}
         >
             {/* Background */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-gray-100 to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-all duration-300 group-hover:shadow-lg dark:group-hover:shadow-purple-900/20" />
+            <div className={`absolute inset-0 transition-all duration-300 rounded-xl ${isDark
+                    ? 'bg-linear-to-br from-gray-800 to-gray-900 group-hover:shadow-lg group-hover:shadow-purple-900/20'
+                    : 'bg-linear-to-br from-gray-100 to-gray-50 group-hover:shadow-lg group-hover:shadow-blue-500/20'
+                }`} />
 
             {/* Border Animation */}
-            <div className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-blue-400/20 to-purple-400/20 dark:from-blue-500/20 dark:to-purple-500/20 pointer-events-none" />
+            <div className={`absolute inset-0 transition-opacity duration-300 opacity-0 pointer-events-none rounded-xl group-hover:opacity-100 ${isDark
+                    ? 'bg-linear-to-br from-blue-500/20 to-purple-500/20'
+                    : 'bg-linear-to-br from-blue-400/20 to-purple-400/20'
+                }`} />
 
             {/* Icon Container */}
-            <div className="relative w-6 h-6 flex items-center justify-center">
+            <div className="relative flex items-center justify-center w-6 h-6">
                 {/* Sun Icon */}
                 <div
                     className={`absolute w-6 h-6 flex items-center justify-center transition-all duration-500 ${isDark
@@ -45,15 +51,21 @@ export default function ThemeSwitch() {
                             : 'opacity-0 -rotate-90 scale-0'
                         }`}
                 >
-                    <FiMoon className="w-5 h-5 text-indigo-400 drop-shadow-sm" />
+                    <FiMoon className="w-5 h-5 text-blue-400 drop-shadow-sm" />
                 </div>
             </div>
 
             {/* Glow effect on hover */}
-            <div className="absolute -inset-1 rounded-xl bg-gradient-to-br from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 dark:group-hover:opacity-30 transition-opacity duration-300 blur -z-10" />
+            <div className={`absolute transition-opacity duration-300 opacity-0 -inset-1 rounded-xl blur -z-10 ${isDark
+                    ? 'bg-linear-to-br from-blue-600 to-purple-600 group-hover:opacity-30'
+                    : 'bg-linear-to-br from-blue-400 to-purple-400 group-hover:opacity-20'
+                }`} />
 
             {/* Ripple effect */}
-            <div className="absolute inset-0 rounded-xl opacity-0 group-active:opacity-100 transition-opacity duration-300 animate-ping bg-gradient-to-br from-blue-400 to-purple-400 pointer-events-none" />
+            <div className={`absolute inset-0 transition-opacity duration-300 opacity-0 pointer-events-none rounded-xl group-active:opacity-100 animate-ping ${isDark
+                    ? 'bg-linear-to-br from-blue-600 to-purple-600'
+                    : 'bg-linear-to-br from-blue-400 to-purple-400'
+                }`} />
         </button>
     )
 }
