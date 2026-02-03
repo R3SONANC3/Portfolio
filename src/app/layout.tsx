@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import Navbar from '@/components/Navbar'
-import { ThemeProviderWrapper } from '@/components/ThemeProvider'
+import Navbar from '@components/Navbar'
+import { ThemeProviderWrapper } from '@components/ThemeProvider'
 import './globals.css'
 
 
@@ -16,10 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className="min-h-screen bg-white text-black dark:bg-gray-950 dark:text-white">
+      <body className="min-h-screen text-black bg-white dark:bg-gray-950 dark:text-white">
         <ThemeProviderWrapper>
           <Navbar/>
-          <main className='min-h-scree px-4 md:px-6'>
+          <main className='px-4 min-h-scree md:px-6'>
           {children}
           </main>
         </ThemeProviderWrapper>
