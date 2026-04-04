@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import { FaGithub, FaEnvelope } from 'react-icons/fa'
 
 export const socialLinks = [
   { 
@@ -9,14 +9,8 @@ export const socialLinks = [
   },
   { 
     icon: FaGithub, 
-    href: 'https://github.com/R3SONANC3', 
+    href: `https://github.com/${process.env.GITHUB_USERNAME}`, 
     label: 'GitHub',
     color: 'dark:hover:text-cyan-400 hover:text-blue-600'
-  },
-  { 
-    icon: FaLinkedin, 
-    href: 'https://linkedin.com/in/yourprofile', 
-    label: 'LinkedIn',
-    color: 'hover:text-blue-600 dark:hover:text-blue-400'
   },
 ]

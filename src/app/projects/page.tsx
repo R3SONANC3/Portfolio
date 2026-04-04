@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { ExternalLink, Github, Star } from 'lucide-react'
@@ -11,7 +11,12 @@ const categories = ['All', 'Frontend', 'Full Stack', 'Backend']
 export default function Projects() {
     const { resolvedTheme } = useTheme()
     const isDark = resolvedTheme === 'dark'
+    const [mounted, setMounted] = useState(false)
     const [selectedCategory, setSelectedCategory] = useState('All')
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
 
     const filteredProjects = selectedCategory === 'All'
         ? projects
@@ -28,11 +33,11 @@ export default function Projects() {
                 }`}>
                 {/* Background Elements */}
                 <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                    <div className={`absolute rounded-full -top-40 -right-40 w-80 h-80 blur-3xl ${isDark
+                    <div className={`absolute rounded-full -top-40 -right-40 w-80 h-80 blur-3xl ${mounted && isDark
                         ? 'bg-linear-to-br from-blue-900 to-purple-900 opacity-20'
                         : 'bg-linear-to-br from-blue-200 to-purple-200 opacity-20'
                         }`} />
-                    <div className={`absolute rounded-full -bottom-40 -left-40 w-80 h-80 blur-3xl ${isDark
+                    <div className={`absolute rounded-full -bottom-40 -left-40 w-80 h-80 blur-3xl ${mounted && isDark
                         ? 'bg-linear-to-tr from-purple-900 to-pink-900 opacity-20'
                         : 'bg-linear-to-tr from-purple-200 to-pink-200 opacity-20'
                         }`} />
