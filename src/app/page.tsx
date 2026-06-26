@@ -8,11 +8,14 @@ import { socialLinks } from '@data/socialLinks'
 import CodeEditor from '@/components/CodeEditor'
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
+  const [mounted, setMounted] = useState(false)
 
-  useEffect(() => setMounted(true), [])
+  useEffect(() => {
+      setMounted(true)
+  }, [])
+
+  const isDark = mounted && resolvedTheme === 'dark'
   if (!mounted) return null
 
   return (
@@ -65,7 +68,7 @@ export default function Home() {
             <p className={`max-w-lg mb-8 text-lg leading-relaxed transition-colors duration-300 ${
               isDark ? 'text-gray-400' : 'text-gray-600'
             }`}>
-              I craft beautiful, performant web applications that solve real-world problems. Passionate about clean code, great design, and creating experiences that users love.
+              This website was created as an experiment to showcase and test the capabilities of AI powered vibe coding. Every aspect of the project from design ideas and content to code generation and implementation was built with the assistance of AI, demonstrating how modern AI tools can accelerate web development and turn ideas into working applications.
             </p>
 
             <div className="flex flex-wrap gap-4 mb-10">

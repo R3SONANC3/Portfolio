@@ -17,12 +17,13 @@ type StatusType = 'idle' | 'loading' | 'success' | 'error'
 
 export default function Contact() {
   const { resolvedTheme } = useTheme()
-  const isDark = resolvedTheme === 'dark'
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  const isDark = mounted && resolvedTheme === 'dark'
 
   const [formData, setFormData] = useState<FormData>({
     name: '', email: '', subject: '', message: '',
@@ -63,6 +64,8 @@ export default function Contact() {
     }
   }
 
+  if (!mounted) return null
+
   const inputClass = `w-full px-4 py-3 rounded-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/20 ${
     isDark
       ? 'bg-gray-800 border border-gray-700 text-white placeholder-gray-500 focus:border-blue-500'
@@ -79,8 +82,8 @@ export default function Contact() {
       {/* Hero */}
       <section className={`relative px-4 pt-32 pb-16 sm:px-6 lg:px-8 ${isDark ? 'bg-gray-950' : 'bg-linear-to-br from-white to-gray-50'}`}>
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className={`absolute rounded-full -top-40 -right-40 w-80 h-80 blur-3xl ${mounted && isDark ? 'bg-linear-to-br from-blue-900 to-purple-900 opacity-20' : 'bg-linear-to-br from-blue-200 to-purple-200 opacity-20'}`} />
-          <div className={`absolute rounded-full -bottom-40 -left-40 w-80 h-80 blur-3xl ${mounted && isDark ? 'bg-linear-to-tr from-purple-900 to-pink-900 opacity-20' : 'bg-linear-to-tr from-purple-200 to-pink-200 opacity-20'}`} />
+          <div className={`absolute rounded-full -top-40 -right-40 w-80 h-80 blur-3xl ${isDark ? 'bg-linear-to-br from-blue-900 to-purple-900 opacity-20' : 'bg-linear-to-br from-blue-200 to-purple-200 opacity-20'}`} />
+          <div className={`absolute rounded-full -bottom-40 -left-40 w-80 h-80 blur-3xl ${isDark ? 'bg-linear-to-tr from-purple-900 to-pink-900 opacity-20' : 'bg-linear-to-tr from-purple-200 to-pink-200 opacity-20'}`} />
         </div>
         <div className="relative max-w-5xl mx-auto">
           <div className="duration-700 animate-in fade-in slide-in-from-bottom-4">

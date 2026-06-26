@@ -91,37 +91,62 @@ export default function About() {
                                 </span>
                             </h1>
 
-                            <div className={`space-y-4 mb-8 text-lg leading-relaxed ${isDark ? 'text-gray-400' : 'text-gray-600'
-                                }`}>
+                            <div
+                                className={`space-y-6 mb-8 max-w-2xl text-lg leading-8 tracking-wide ${isDark ? 'text-gray-400' : 'text-gray-600'
+                                    }`}
+                            >
                                 <p>
-                                    I'm a passionate full-stack developer with 4+ years of experience building beautiful and performant web applications. My journey started with curiosity and has evolved into a commitment to creating exceptional digital experiences.
+                                    I'm a <span className="font-semibold text-blue-500">Computer Engineering graduate</span> and
+                                    aspiring <span className="font-semibold text-blue-500">Full Stack Developer</span> with
+                                    hands-on experience from internships, freelance work, and personal projects. I enjoy building
+                                    modern web applications and solving real-world problems through technology.
                                 </p>
+
                                 <p>
-                                    I specialize in modern web technologies like React, Next.js, and Node.js, with a focus on writing clean, maintainable code and delivering solutions that users love.
+                                    My experience includes working with <span className="font-medium">React</span>,
+                                    <span className="font-medium"> Next.js</span>,
+                                    <span className="font-medium"> NestJS</span>,
+                                    <span className="font-medium"> TypeScript</span>,
+                                    <span className="font-medium"> Python</span>,
+                                    <span className="font-medium"> MySQL</span>, and
+                                    <span className="font-medium"> Docker</span>, as well as contributing to ERP system
+                                    customization using <span className="font-medium">ERPNext</span> and
+                                    <span className="font-medium"> Frappe Framework</span>.
                                 </p>
+
                                 <p>
-                                    When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the developer community.
+                                    This portfolio was created as an experiment in
+                                    <span className="font-semibold text-purple-500"> AI powered vibe coding</span>, showcasing my
+                                    projects, skills, and learning journey while exploring how AI can accelerate software
+                                    development.
                                 </p>
                             </div>
 
                             {/* Stats */}
                             <div className="grid grid-cols-2 gap-4 mb-8">
                                 {[
-                                    { label: 'Years of Experience', value: '4+' },
-                                    { label: 'Projects Completed', value: '50+' },
-                                    { label: 'Happy Clients', value: '30+' },
+                                    { label: 'Internship Experience', value: '3M+' },
+                                    { label: 'Personal Projects', value: '5+' },
+                                    { label: 'Hackathon Awards', value: '1' },
                                     { label: 'Technologies', value: '15+' },
                                 ].map((stat) => (
-                                    <div key={stat.label} className={`p-4 rounded-lg transition-colors duration-300 ${isDark
-                                        ? 'bg-gray-800 border border-gray-700'
-                                        : 'bg-linear-to-br from-blue-50 to-purple-50 border border-blue-200'
-                                        }`}>
-                                        <div className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-blue-600'
-                                            }`}>
+                                    <div
+                                        key={stat.label}
+                                        className={`p-4 rounded-lg transition-colors duration-300 ${isDark
+                                            ? 'bg-gray-800 border border-gray-700'
+                                            : 'bg-linear-to-br from-blue-50 to-purple-50 border border-blue-200'
+                                            }`}
+                                    >
+                                        <div
+                                            className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-blue-600'
+                                                }`}
+                                        >
                                             {stat.value}
                                         </div>
-                                        <div className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'
-                                            }`}>
+                                        <div
+                                            className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-600'
+                                                }`}
+                                        >
                                             {stat.label}
                                         </div>
                                     </div>
@@ -156,7 +181,7 @@ export default function About() {
                     <div className="space-y-6">
                         {experience.map((job, index) => (
                             <div
-                                key={job.company}
+                                key={job.id}
                                 className={`p-6 rounded-xl border-2 transition-all duration-300 animate-in fade-in slide-in-from-left-4 ${isDark
                                     ? 'bg-gray-800/50 border-gray-700 hover:border-blue-500'
                                     : 'bg-white border-gray-200 hover:border-blue-400'
