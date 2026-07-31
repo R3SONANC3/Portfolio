@@ -5,6 +5,7 @@ import { ThemeProviderWrapper } from '@components/ThemeProvider'
 import ErrorBoundary from '@components/ErrorBoundary'
 import Loading from './loading'
 import Footer from '@/components/footer'
+import { LanguageProvider } from '@/components/LanguageProvider'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -27,17 +28,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className="min-h-screen text-black bg-white dark:bg-gray-950 dark:text-white">
         <ThemeProviderWrapper>
-          <Navbar />
-
-          <ErrorBoundary>
-            <Suspense fallback={<Loading />}>
-              <main>
+          <LanguageProvider>
+            <Navbar />
+            <ErrorBoundary>
+              <Suspense fallback={<Loading />}>
                 {children}
-              </main>
-            </Suspense>
-          </ErrorBoundary>
-          
-          <Footer />
+              </Suspense>
+            </ErrorBoundary>
+            <Footer />
+          </LanguageProvider>
         </ThemeProviderWrapper>
       </body>
     </html>
