@@ -18,7 +18,15 @@ const en = {
     sticker: 'open to work!',
     photoAlt: 'Jeerapat playing guitar',
   },
-  work: {},
+  work: {
+    kicker: 'ของที่ทำมา',
+    title: 'Selected work',
+    code: 'Code',
+    visit: 'Visit',
+    privateNote: 'Private client project · details shared in interview',
+    archAlt:
+      'Architecture: the POS desktop app (Electron) and the Admin web app (Next.js) talk to the API (Node/Express), which stores data in SQL Server and integrates with SAP Business One and the bank API.',
+  },
   experience: {},
   notes: {},
   about: {},
@@ -47,7 +55,15 @@ const th: Copy = {
     sticker: 'เปิดรับงาน!',
     photoAlt: 'Jeerapat กำลังเล่นกีตาร์',
   },
-  work: {},
+  work: {
+    kicker: "things I've built",
+    title: 'ผลงานที่เลือกมา',
+    code: 'โค้ด',
+    visit: 'เปิดดู',
+    privateNote: 'โปรเจกต์ลูกค้า (ไม่เปิดเผยต่อสาธารณะ) · คุยรายละเอียดได้ตอนสัมภาษณ์',
+    archAlt:
+      'โครงสร้างระบบ: แอป POS บนเดสก์ท็อป (Electron) และเว็บ Admin (Next.js) เชื่อมกับ API (Node/Express) ซึ่งเก็บข้อมูลใน SQL Server และเชื่อมต่อกับ SAP Business One และ API ของธนาคาร',
+  },
   experience: {},
   notes: {},
   about: {},
