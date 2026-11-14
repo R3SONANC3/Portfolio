@@ -8,8 +8,8 @@ export default function About() {
   const t = content[language].about
 
   return (
-    <section id="about" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 md:px-10">
-      <p className="font-hand text-lg text-orange-deep">{t.kicker}</p>
+    <section id="about" className="mx-auto max-w-6xl scroll-mt-20 border-t-2 border-dashed border-line px-5 py-12 md:px-10">
+      <p lang={language === 'en' ? 'th' : 'en'} className="font-hand text-lg text-orange-deep">{t.kicker}</p>
       <h2 className="mb-6 text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">{t.title}</h2>
       <div className="grid gap-8 md:grid-cols-[1.2fr_1fr] md:gap-9">
         <div className="min-w-0 space-y-3">

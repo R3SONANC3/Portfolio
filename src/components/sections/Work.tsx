@@ -3,15 +3,15 @@
 import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { useLanguage } from '@/components/LanguageProvider'
-import { content } from '@/data/content'
+import { content, type Copy } from '@/data/content'
 import { projects, type Project } from '@/data/projects'
 
-type Copy = (typeof content)['en']['work']
+type WorkCopy = Copy['work']
 
 const lift = 'motion-safe:transition motion-safe:hover:-translate-y-0.5'
 const linkCls = 'inline-flex items-center gap-1 text-sm font-semibold text-orange-deep'
 
-function Links({ p, t }: { p: Project; t: Copy }) {
+function Links({ p, t }: { p: Project; t: WorkCopy }) {
   if (!p.github && !p.live) return null
   return (
     <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-3">
@@ -30,7 +30,7 @@ function Links({ p, t }: { p: Project; t: Copy }) {
 }
 
 function Pill({ children }: { children: React.ReactNode }) {
-  return <span className="inline-block rounded-full bg-peach px-2.5 py-0.5 text-xs font-semibold text-orange-deep">{children}</span>
+  return <span className="inline-block rounded-full bg-peach px-2.5 py-0.5 text-xs font-semibold text-orange-ink">{children}</span>
 }
 
 function Box({ children, sub, api }: { children: React.ReactNode; sub?: string; api?: boolean }) {
@@ -77,7 +77,7 @@ function Architecture({ alt }: { alt: string }) {
   )
 }
 
-function LeadCard({ p, t, th }: { p: Project; t: Copy; th: boolean }) {
+function LeadCard({ p, t, th }: { p: Project; t: WorkCopy; th: boolean }) {
   return (
     <article className="grid gap-6 rounded-2xl border-2 border-ink bg-white p-5 shadow-hard md:grid-cols-[1.3fr_1fr] md:gap-7 md:p-6">
       <div className="min-w-0">
@@ -105,7 +105,7 @@ function LeadCard({ p, t, th }: { p: Project; t: Copy; th: boolean }) {
   )
 }
 
-function Card({ p, t, th, i, big }: { p: Project; t: Copy; th: boolean; i: number; big: boolean }) {
+function Card({ p, t, th, i, big }: { p: Project; t: WorkCopy; th: boolean; i: number; big: boolean }) {
   return (
     <article
       className={`flex min-w-0 flex-col border-2 border-ink bg-white ${lift} ${
@@ -151,8 +151,8 @@ export default function Work() {
   const rest = projects.filter((p) => !p.featured && !p.lead)
 
   return (
-    <section id="work" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 md:px-10">
-      <p className="font-hand text-lg text-orange-deep">{t.kicker}</p>
+    <section id="work" className="mx-auto max-w-6xl scroll-mt-20 border-t-2 border-dashed border-line px-5 py-12 md:px-10">
+      <p lang={language === 'en' ? 'th' : 'en'} className="font-hand text-lg text-orange-deep">{t.kicker}</p>
       <h2 className="mb-6 text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">{t.title}</h2>
       {lead && <LeadCard p={lead} t={t} th={th} />}
       <div className="mt-6 grid gap-5 md:grid-cols-2">

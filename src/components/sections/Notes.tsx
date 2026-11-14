@@ -24,8 +24,8 @@ export default function Notes() {
   const th = language === 'th'
 
   return (
-    <section id="notes" className="mx-auto max-w-6xl scroll-mt-20 px-5 py-12 md:px-10">
-      <p className="font-hand text-lg text-orange-deep">{t.kicker}</p>
+    <section id="notes" className="mx-auto max-w-6xl scroll-mt-20 border-t-2 border-dashed border-line px-5 py-12 md:px-10">
+      <p lang={language === 'en' ? 'th' : 'en'} className="font-hand text-lg text-orange-deep">{t.kicker}</p>
       <h2 className="mb-3 text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">{t.title}</h2>
       <p className="mb-8 max-w-2xl leading-relaxed">{t.intro}</p>
 

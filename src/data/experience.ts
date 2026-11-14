@@ -1,3 +1,4 @@
+// company, duration, description, highlights: source of truth for the "no new claims" rule; not rendered.
 export const experience = [
     {
         id: 'freelance-2026',

@@ -24,6 +24,7 @@ export default function Navbar() {
     return () => document.removeEventListener('keydown', onKey)
   }, [open])
 
+  const target = language === 'en' ? 'th' : 'en'
   const link = 'rounded px-1 py-1 hover:text-orange-deep'
 
   return (
@@ -37,10 +38,12 @@ export default function Navbar() {
           <button
             type="button"
             className="rounded-full border-2 border-ink px-2.5 py-0.5 text-xs"
-            aria-label={nav.switchTo}
-            onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+            onClick={() => setLanguage(target)}
           >
-            {language === 'en' ? 'TH' : 'EN'}
+            <span aria-hidden="true">{target.toUpperCase()}</span>
+            <span className="sr-only">
+              {target.toUpperCase()} · <span lang={target}>{nav.switchTo}</span>
+            </span>
           </button>
           <a href={CV_PATH} download aria-label={nav.cv} className="whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-cream sm:px-3.5"><span aria-hidden="true" className="sm:hidden">CV ↓</span><span className="hidden sm:inline">{nav.cv} ↓</span></a>
           <button

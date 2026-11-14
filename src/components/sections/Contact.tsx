@@ -6,6 +6,8 @@ import { content } from '@/data/content'
 import { contactMethods } from '@/data/contactMethods'
 import { GITHUB_URL } from '@/data/site'
 
+const rowKey = { email: 'rowEmail', phone: 'rowPhone', location: 'rowLocation' } as const
+const maxLen = { name: 100, email: 254, subject: 180 } as const
 const field =
   'w-full rounded-xl border-2 border-ink bg-white px-3 py-2 text-ink placeholder:text-muted'
 
@@ -49,18 +51,18 @@ export default function Contact() {
     <section id="contact" className="mx-auto max-w-6xl scroll-mt-20 px-5 pb-12 md:px-10">
       <div className="grid gap-8 rounded-3xl bg-ink p-6 text-cream md:grid-cols-[1.1fr_1fr] md:gap-8 md:p-9">
         <div className="min-w-0">
-          <p className="font-hand text-lg text-sun">{t.kicker}</p>
+          <p lang={language === 'en' ? 'th' : 'en'} className="font-hand text-lg text-sun">{t.kicker}</p>
           <h2 className="mb-3 text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">{t.title}</h2>
           <p className="mb-5 leading-relaxed">{t.intro}</p>
           {contactMethods.map((m) => (
             <div key={m.key} className={row}>
-              <span className={label}>{t[`row${m.key[0].toUpperCase()}${m.key.slice(1)}` as 'rowEmail' | 'rowPhone' | 'rowLocation']}</span>
+              <span className={label}>{t[rowKey[m.key]]}</span>
               {m.href ? (
                 <a href={m.href} className={`${link} text-right`}>
                   {m.value}
                 </a>
               ) : (
-                <span className="text-right">{t.locationValue}</span>
+                m.key === 'location' && <span className="text-right">{t.locationValue}</span>
               )}
             </div>
           ))}
@@ -84,6 +86,8 @@ export default function Contact() {
                 name={k}
                 type={k === 'email' ? 'email' : 'text'}
                 required
+                maxLength={maxLen[k]}
+                autoComplete={k === 'name' || k === 'email' ? k : undefined}
                 placeholder={t.ph[k]}
                 value={form[k]}
                 onChange={changeForm}
@@ -99,6 +103,7 @@ export default function Contact() {
               id="contact-message"
               name="message"
               required
+              maxLength={5000}
               placeholder={t.ph.message}
               rows={4}
               value={form.message}

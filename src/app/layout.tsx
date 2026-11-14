@@ -15,6 +15,11 @@ const mali = Mali({ subsets: ['thai', 'latin'], weight: ['400', '600'], variable
 export const metadata: Metadata = {
   title: 'Jeerapat Kahyaisiang — Full-stack Developer',
   description: 'Full-stack developer (React, Node.js, TypeScript) based in Phrae, Thailand. Selected work, experience and CV.',
+  openGraph: {
+    title: 'Jeerapat Kahyaisiang — Full-stack Developer',
+    description: 'Full-stack developer (React, Node.js, TypeScript) based in Phrae, Thailand. Selected work, experience and CV.',
+    type: 'website',
+  },
   icons: {
     icon: [
       { url: '/icons/favicon.ico' },
@@ -29,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${plexThai.variable} ${mali.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${bricolage.variable} ${plexThai.variable} ${mali.variable}`}>
       <body className="min-h-screen">
         <LanguageProvider>
           <Navbar />

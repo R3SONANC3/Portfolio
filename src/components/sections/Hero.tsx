@@ -12,9 +12,9 @@ export default function Hero() {
   const t = content[language].hero
 
   return (
-    <section className="mx-auto grid max-w-6xl scroll-mt-20 items-center gap-10 px-5 pb-12 pt-8 md:grid-cols-[1.4fr_1fr] md:gap-9 md:px-10 md:pt-6">
+    <section className="mx-auto grid max-w-6xl items-center gap-10 px-5 pb-12 pt-8 md:grid-cols-[1.4fr_1fr] md:gap-9 md:px-10 md:pt-6">
       <div>
-        <p className="font-hand text-lg text-orange-deep">{t.greeting}</p>
+        <p lang={language === 'en' ? 'th' : 'en'} className="font-hand text-lg text-orange-deep">{t.greeting}</p>
         <p className="mb-3 text-sm text-muted">{t.role}</p>
         <h1 className="mb-4 text-[40px] font-extrabold leading-[1.15] tracking-[-0.03em] md:text-[56px]">
           {t.titleA}

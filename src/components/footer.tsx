@@ -14,7 +14,7 @@ export default function Footer() {
         <p>© {new Date().getFullYear()} Jeerapat Kahyaisiang · {madeIn}</p>
         <div className="flex items-center gap-4 text-lg text-ink">
           {socialLinks.map(({ icon: Icon, href, label }) => (
-            <a key={label} href={href} aria-label={label} {...(label === 'Email' ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
+            <a key={label} href={href} aria-label={label} {...(href.startsWith('mailto:') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
               <Icon />
             </a>
           ))}

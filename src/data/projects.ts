@@ -1,10 +1,5 @@
 import { GITHUB_URL } from './site'
 
-export interface ProjectStat {
-  label: string
-  value: string
-}
-
 export interface ProjectPart {
   name: string
   nameTh: string
@@ -22,12 +17,10 @@ export interface Project {
   screenshot?: string
   lead?: boolean
   parts?: ProjectPart[]
-  category: string
   tags: string[]
   github?: string
   live?: string
   featured?: boolean
-  stats?: ProjectStat[]
 }
 
 const repo = (name: string) => (GITHUB_URL ? `${GITHUB_URL}/${name}` : undefined)
@@ -43,7 +36,6 @@ export const projects: Project[] = [
       'An end-to-end palm purchasing and weighing system: a desktop POS wired to the scale, a web back office for approvals, and an API that pushes documents to SAP Business One and pays suppliers via the bank, automatically.',
     descriptionTh:
       'ระบบรับซื้อและชั่งน้ำหนักปาล์มครบวงจร แอป POS เดสก์ท็อปที่ต่อเครื่องชั่ง, เว็บหลังบ้านอนุมัติเอกสาร และ API ที่ส่งข้อมูลเข้า SAP Business One และจ่ายเงินผ่านธนาคารอัตโนมัติ',
-    category: 'Full Stack',
     tags: ['Node.js', 'Express', 'SQL Server', 'Sequelize', 'Next.js', 'React', 'Ant Design', 'Electron', 'SQLite', 'SAP Business One', 'Docker', 'Jenkins'],
     parts: [
       {
@@ -75,15 +67,9 @@ export const projects: Project[] = [
       'One place to manage and explore Competency, SFIA v9 and TPQI frameworks. Two subsystems on a REST API over three MySQL databases.',
     descriptionTh:
       'ที่เดียวสำหรับจัดการและสำรวจกรอบ Competency, SFIA v9 และ TPQI แบ่งเป็นสองระบบย่อยบน REST API ที่เชื่อมฐานข้อมูล MySQL สามชุด',
-    category: 'Full Stack',
     tags: ['React', 'Express', 'Prisma', 'MySQL', 'Docker', 'Vite', 'Node.js', 'TypeScript'],
     github: 'https://github.com/CosecDY/CompetencyV2.1',
     featured: true,
-    stats: [
-      { label: 'Databases', value: '3' },
-      { label: 'Frameworks', value: '3' },
-      { label: 'Commits', value: '327+' },
-    ],
   },
   {
     id: 'perfnet',
@@ -94,15 +80,9 @@ export const projects: Project[] = [
       'Load-testing platform that shows how a server holds up under concurrent users: response time, stability, success rate.',
     descriptionTh:
       'แพลตฟอร์มทดสอบโหลดที่แสดงว่าเซิร์ฟเวอร์รับผู้ใช้พร้อมกันได้ดีแค่ไหน ดูทั้งเวลาตอบสนอง ความเสถียร และอัตราคำขอที่สำเร็จ',
-    category: 'Full Stack',
     tags: ['Python', 'JavaScript', 'Docker', 'CSS'],
     github: repo('PerfNet'),
     featured: true,
-    stats: [
-      { label: 'Hackathon', value: '🥈 2nd' },
-      { label: 'Stack', value: 'Full Stack' },
-      { label: 'Focus', value: 'Load Testing' },
-    ],
   },
   {
     id: 'institution-evaluation',
@@ -111,7 +91,6 @@ export const projects: Project[] = [
     badgeTh: 'ใช้งานจริง',
     description: 'A web app for evaluating institutions, with a React client and a separate backend server. Deployed live.',
     descriptionTh: 'เว็บแอปสำหรับประเมินสถาบัน มี React client และเซิร์ฟเวอร์ backend แยกกัน เปิดใช้งานจริงแล้ว',
-    category: 'Full Stack',
     tags: ['React', 'JavaScript', 'CSS'],
     github: repo('InstitutionEvaluation'),
     live: 'https://field-ex.vercel.app',
@@ -125,7 +104,6 @@ export const projects: Project[] = [
       'A university database course project (305311) that turns email enrollment data into an interactive dashboard, covering schema design, data processing and visualization.',
     descriptionTh:
       'โปรเจกต์วิชาฐานข้อมูล (305311) ที่แปลงข้อมูลการลงทะเบียนทางอีเมลเป็นแดชบอร์ดแบบโต้ตอบ ครอบคลุมการออกแบบสคีมา การประมวลผลข้อมูล และการแสดงผล',
-    category: 'Full Stack',
     tags: ['JavaScript', 'TypeScript', 'Python', 'SQL'],
     github: repo('DatabaseProject'),
     live: 'https://database-project-bice.vercel.app',
@@ -137,7 +115,6 @@ export const projects: Project[] = [
     badgeTh: 'เว็บนี้เอง',
     description: 'This site: a bilingual one-page portfolio built with Next.js, TypeScript and Tailwind CSS.',
     descriptionTh: 'เว็บนี้เอง: พอร์ตโฟลิโอหน้าเดียวสองภาษา สร้างด้วย Next.js, TypeScript และ Tailwind CSS',
-    category: 'Frontend',
     tags: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     github: repo('Portfolio'),
   },
