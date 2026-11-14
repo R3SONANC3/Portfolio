@@ -53,14 +53,14 @@ export default function Contact() {
           <h2 className="mb-3 text-3xl font-extrabold tracking-[-0.02em] md:text-4xl">{t.title}</h2>
           <p className="mb-5 leading-relaxed">{t.intro}</p>
           {contactMethods.map((m) => (
-            <div key={m.label} className={row}>
-              <span className={label}>{m.label === 'Location' ? t.location : m.label}</span>
+            <div key={m.key} className={row}>
+              <span className={label}>{t[`row${m.key[0].toUpperCase()}${m.key.slice(1)}` as 'rowEmail' | 'rowPhone' | 'rowLocation']}</span>
               {m.href ? (
                 <a href={m.href} className={`${link} text-right`}>
                   {m.value}
                 </a>
               ) : (
-                <span className="text-right">{m.value}</span>
+                <span className="text-right">{t.locationValue}</span>
               )}
             </div>
           ))}
@@ -84,6 +84,7 @@ export default function Contact() {
                 name={k}
                 type={k === 'email' ? 'email' : 'text'}
                 required
+                placeholder={t.ph[k]}
                 value={form[k]}
                 onChange={changeForm}
                 className={field}
@@ -98,6 +99,7 @@ export default function Contact() {
               id="contact-message"
               name="message"
               required
+              placeholder={t.ph.message}
               rows={4}
               value={form.message}
               onChange={changeForm}
