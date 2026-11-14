@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, type ChangeEvent, type FormEvent } from 'react'
+import { useEffect, useState, type ChangeEvent, type FormEvent } from 'react'
 import { AlertCircle, ArrowDown, ArrowUpRight, CheckCircle, Code2, Cpu, Github, Layers3, Send, Sparkles } from 'lucide-react'
 import { contactMethods } from '@data/contactMethods'
 import { experience } from '@data/experience'
@@ -64,6 +64,36 @@ export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [message, setMessage] = useState('')
+
+  useEffect(() => {
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const targets = document.querySelectorAll<HTMLElement>([
+      '.section-intro', '.capability', '.portrait-composition', '.about-copy',
+      '.project-heading', '.work-card', '.contact-title', '.contact-links a',
+      '.contact-form-new', '.footer-invite', '.footer-lower', '.footer-end',
+    ].join(','))
+
+    targets.forEach((element, index) => {
+      element.classList.add('motion-reveal')
+      element.style.setProperty('--reveal-delay', `${(index % 4) * 80}ms`)
+    })
+
+    if (reduceMotion) {
+      targets.forEach((element) => element.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return
+        entry.target.classList.add('is-visible')
+        observer.unobserve(entry.target)
+      })
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 })
+
+    targets.forEach((element) => observer.observe(element))
+    return () => observer.disconnect()
+  }, [])
 
   const capabilityCopy = [
     [copy.capabilityA, copy.capabilityB],

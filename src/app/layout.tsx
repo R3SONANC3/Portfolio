@@ -7,6 +7,7 @@ import Loading from './loading'
 import Footer from '@/components/footer'
 import { LanguageProvider } from '@/components/LanguageProvider'
 import './globals.css'
+import './motion.css'
 
 export const metadata: Metadata = {
   title: 'Jeerapat.dev',
