@@ -1,69 +1,59 @@
 'use client'
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useEffect, useState, type MouseEvent } from 'react'
-import { ArrowUpRight, Braces, Menu, X } from 'lucide-react'
-import ThemeSwitch from './ThemeSwitch'
+import { useEffect, useState } from 'react'
+import { content } from '@data/content'
+import { CV_PATH } from '@data/site'
 import { useLanguage } from './LanguageProvider'
 
-const links = [
-  { id: 'home', href: '/' },
-  { id: 'about', href: '/#about' },
-  { id: 'projects', href: '/#projects' },
-] as const
+const ids = ['work', 'experience', 'notes', 'about'] as const
 
 export default function Navbar() {
-  const pathname = usePathname()
-  const [active, setActive] = useState('home')
-  const [open, setOpen] = useState(false)
   const { language, setLanguage } = useLanguage()
-  const labels = language === 'th'
-    ? { home: 'หน้าแรก', about: 'เกี่ยวกับ', projects: 'ผลงาน', cta: 'คุยกัน', role: 'นักพัฒนาเว็บ' }
-    : { home: 'Home', about: 'About', projects: 'Projects', cta: 'Let’s talk', role: 'WEB DEVELOPER' }
+  const [open, setOpen] = useState(false)
+  const nav = content[language].nav
 
   useEffect(() => {
-    if (pathname !== '/') return
-    const observed = links.map(({ id }) => document.getElementById(id)).filter((item): item is HTMLElement => item !== null)
-    const observer = new IntersectionObserver((entries) => {
-      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)
-      if (visible[0]) setActive(visible[0].target.id)
-    }, { rootMargin: '-30% 0px -52% 0px', threshold: [0.08, 0.3, 0.6] })
-    observed.forEach((item) => observer.observe(item))
-    const hero = () => { if (window.scrollY < 170) setActive('home') }
-    window.addEventListener('scroll', hero, { passive: true })
-    return () => { observer.disconnect(); window.removeEventListener('scroll', hero) }
-  }, [pathname])
+    if (!open) return
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false)
+    document.addEventListener('keydown', onKey)
+    return () => document.removeEventListener('keydown', onKey)
+  }, [open])
 
-  const go = (event: MouseEvent<HTMLAnchorElement>, id: string) => {
-    setOpen(false)
-    setActive(id)
-    if (pathname !== '/') return
-    const target = document.getElementById(id)
-    if (!target) return
-    event.preventDefault()
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    window.history.replaceState(null, '', id === 'home' ? '/' : `#${id}`)
-  }
+  const link = 'rounded px-1 py-1 hover:text-orange-deep'
 
-  return <header className="topbar">
-    <div className="topbar-inner">
-      <Link href="/" className="topbar-brand topbar-brand--icon" aria-label="Jeerapat home">
-        <span className="brand-mark"><Braces /></span>
-        <span><b>JEERAPAT</b><small>{labels.role}</small></span>
-      </Link>
-      <nav className="topbar-links topbar-links--compact" aria-label="Primary navigation">
-        {links.map((link) => <Link key={link.id} href={link.href} onClick={(event) => go(event, link.id)} className={active === link.id && pathname === '/' ? 'active' : ''}>{labels[link.id]}</Link>)}
-      </nav>
-      <div className="topbar-actions">
-        <button className="language-switch language-switch--orbital" onClick={() => setLanguage(language === 'en' ? 'th' : 'en')} aria-label={language === 'en' ? 'Switch to Thai' : 'Switch to English'}>
-          <span className="language-glow" aria-hidden="true" /><span className={language === 'en' ? 'active' : ''}>EN</span><i /><span className={language === 'th' ? 'active' : ''}>TH</span>
-        </button>
-        <ThemeSwitch />
-        <Link href="/#contact" onClick={(event) => go(event, 'contact')} className="topbar-cta">{labels.cta} <ArrowUpRight /></Link>
-        <button className="topbar-menu" aria-label="Toggle navigation" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+  return (
+    <header className="sticky top-0 z-50 border-b border-line bg-cream/90">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-4 text-sm font-semibold sm:px-10">
+        <a href="#home" className="text-lg font-extrabold">jeerapat.dev</a>
+        <div className="flex items-center gap-3 sm:gap-4">
+          <nav aria-label="Primary" className="hidden items-center gap-5 md:flex">
+            {ids.map((id) => <a key={id} href={`#${id}`} className={link}>{nav[id]}</a>)}
+          </nav>
+          <button
+            type="button"
+            className="rounded-full border-2 border-ink px-2.5 py-0.5 text-xs"
+            aria-label={nav.switchTo}
+            onClick={() => setLanguage(language === 'en' ? 'th' : 'en')}
+          >
+            {language === 'en' ? 'TH' : 'EN'}
+          </button>
+          <a href={CV_PATH} download className="whitespace-nowrap rounded-full bg-ink px-3.5 py-1.5 text-cream">{nav.cv} ↓</a>
+          <button
+            type="button"
+            className="rounded px-1 py-1 md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+            onClick={() => setOpen(!open)}
+          >
+            {nav.menu}
+          </button>
+        </div>
       </div>
-    </div>
-    {open && <nav className="topbar-mobile">{links.map((link, index) => <Link key={link.id} href={link.href} onClick={(event) => go(event, link.id)} className={active === link.id && pathname === '/' ? 'active' : ''}><span>0{index + 1}</span>{labels[link.id]}<ArrowUpRight /></Link>)}</nav>}
-  </header>
+      {open && (
+        <nav id="mobile-menu" aria-label="Mobile" className="flex flex-col gap-2 border-t border-line px-5 py-3 text-base font-semibold md:hidden">
+          {ids.map((id) => <a key={id} href={`#${id}`} className={link} onClick={() => setOpen(false)}>{nav[id]}</a>)}
+        </nav>
+      )}
+    </header>
+  )
 }
