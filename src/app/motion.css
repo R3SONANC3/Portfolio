@@ -1,0 +1,56 @@
+/* Page-wide motion system */
+.topbar { animation:nav-arrive .7s cubic-bezier(.2,.8,.2,1) both; }
+.hero-copy-new .eyebrow,.hero-copy-new h1,.hero-lede,.hero-actions,.hero-strip { animation:hero-arrive .85s cubic-bezier(.16,1,.3,1) both; }
+.hero-copy-new h1 { animation-delay:.08s; }
+.hero-lede { animation-delay:.17s; }
+.hero-actions { animation-delay:.26s; }
+.hero-strip { animation-delay:.35s; }
+.hero-side { animation:scene-arrive 1.1s .16s cubic-bezier(.16,1,.3,1) both; }
+.signal-card-top { animation:card-drift 6s 1.2s ease-in-out infinite; }
+.signal-card-bottom { animation:card-drift 7s 1.8s ease-in-out infinite reverse; }
+.scene-aura { animation:aura-breathe 5.5s ease-in-out infinite; }
+.contact-glow,.footer-light { animation:ambient-drift 12s ease-in-out infinite alternate; }
+.eyebrow span,.footer-invite p span { animation:status-pulse 2.4s ease-in-out infinite; }
+
+.motion-reveal { opacity:0; transform:translate3d(0,42px,0) scale(.985); filter:blur(7px); transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1),filter .65s ease; transition-delay:var(--reveal-delay,0ms); will-change:opacity,transform; }
+.motion-reveal.is-visible { opacity:1; transform:none; filter:none; }
+.portrait-composition.motion-reveal { transform:translate3d(-36px,24px,0) rotate(-1.5deg); }
+.about-copy.motion-reveal,.contact-form-new.motion-reveal { transform:translate3d(36px,24px,0); }
+.portrait-composition.motion-reveal.is-visible,.about-copy.motion-reveal.is-visible,.contact-form-new.motion-reveal.is-visible { transform:none; }
+
+.capability>svg,.work-top b,.contact-links>a>svg:first-child { transition:transform .45s cubic-bezier(.16,1,.3,1),filter .35s ease; }
+.capability:hover>svg { transform:translateY(-5px) rotate(-7deg) scale(1.12); filter:drop-shadow(0 8px 12px color-mix(in srgb,var(--accent) 35%,transparent)); }
+.capability>i { transition:transform .65s cubic-bezier(.16,1,.3,1),opacity .4s ease; }
+.capability:hover>i { transform:scale(1.2) translate(-8px,-8px); opacity:.75; }
+.work-card:hover .work-top b { transform:rotate(5deg) scale(1.08); }
+.work-card .work-links svg,.contact-links>a>svg:last-child,.topbar-cta svg,.button-primary svg { transition:transform .3s cubic-bezier(.16,1,.3,1); }
+.work-card:hover .work-links svg,.contact-links>a:hover>svg:last-child,.topbar-cta:hover svg,.button-primary:hover svg { transform:translate(3px,-3px); }
+.contact-links>a:hover>svg:first-child { transform:scale(1.12) rotate(-6deg); }
+.contact-form-new input:focus,.contact-form-new textarea:focus { transform:translateY(-2px); }
+
+/* Animated 3D earth at the center of the home orbit */
+.scene-earth { position:absolute; left:50%; top:48%; width:230px; height:230px; margin:-115px 0 0 -115px; transform:translateZ(75px); transform-style:preserve-3d; animation:earth-float 5.5s ease-in-out infinite; }
+.earth-canvas { width:100%!important; height:100%!important; overflow:visible; filter:drop-shadow(0 0 28px #4eeaff8c) drop-shadow(0 0 58px #7958ff59); }
+.earth-globe { position:absolute; inset:5px; overflow:hidden; border:1px solid #c8ffffd9; border-radius:50%; background:#071b44; box-shadow:inset -34px -18px 48px #01051ccc,inset 15px 10px 28px #75f5ff3b,0 0 42px #4eeaff9c,0 0 130px #7958ff69; transform:rotate(-8deg); }
+.earth-surface { position:absolute; inset:-2%; border-radius:inherit; background:radial-gradient(ellipse at 22% 31%,#5fd5a8 0 8%,transparent 9%),radial-gradient(ellipse at 37% 46%,#2da982 0 12%,transparent 13%),radial-gradient(ellipse at 60% 27%,#79d5a1 0 9%,transparent 10%),radial-gradient(ellipse at 73% 48%,#35a980 0 14%,transparent 15%),radial-gradient(ellipse at 48% 75%,#3bb58b 0 8%,transparent 9%),linear-gradient(115deg,#0c8fb8,#1649a1 54%,#071947); background-size:118% 100%; animation:earth-rotate 13s linear infinite; }
+.earth-surface::after { position:absolute; inset:0; border-radius:inherit; background:radial-gradient(ellipse at 38% 18%,#ffffff8f 0 2%,transparent 3%),radial-gradient(ellipse at 62% 58%,transparent 0 14%,#ffffff30 16% 18%,transparent 20%),radial-gradient(ellipse at 28% 68%,transparent 0 10%,#ffffff26 12% 14%,transparent 16%); content:""; filter:blur(2px); }
+.earth-grid { position:absolute; inset:0; border-radius:50%; opacity:.25; background:repeating-linear-gradient(0deg,transparent 0 26px,#bffcff 27px 28px,transparent 29px 45px),repeating-linear-gradient(90deg,transparent 0 32px,#bffcff 33px 34px,transparent 35px 55px); mask-image:radial-gradient(circle,#000 48%,transparent 72%); }
+.earth-atmosphere { position:absolute; inset:0; border-radius:50%; background:radial-gradient(circle at 32% 26%,#d8ffff50,transparent 27%),linear-gradient(115deg,transparent 45%,#020516b8 72%); box-shadow:inset 8px 0 12px #89f9ff4d; }
+.earth-ring { position:absolute; left:-31px; top:87px; width:292px; height:54px; border:1px solid #90f5ff8c; border-radius:50%; box-shadow:0 0 16px #66eaff45; transform:rotate(-13deg) rotateX(68deg); }
+.earth-ring::after { position:absolute; left:45%; top:-4px; width:8px; height:8px; border-radius:50%; background:#fff; box-shadow:0 0 13px #78efff; content:""; animation:earth-satellite 4s ease-in-out infinite; }
+
+@keyframes nav-arrive { from { opacity:0; transform:translateY(-24px); } to { opacity:1; transform:none; } }
+@keyframes hero-arrive { from { opacity:0; transform:translateY(34px); filter:blur(8px); } to { opacity:1; transform:none; filter:none; } }
+@keyframes scene-arrive { from { opacity:0; transform:translate3d(45px,18px,0) scale(.94); } to { opacity:1; transform:none; } }
+@keyframes card-drift { 0%,100% { translate:0 0; } 50% { translate:0 -10px; } }
+@keyframes aura-breathe { 0%,100% { opacity:.65; scale:.92; } 50% { opacity:1; scale:1.08; } }
+@keyframes ambient-drift { 0% { transform:translate3d(-3%,0,0) scale(.96); } 100% { transform:translate3d(4%,3%,0) scale(1.08); } }
+@keyframes status-pulse { 0%,100% { opacity:.7; box-shadow:0 0 8px currentColor; } 50% { opacity:1; box-shadow:0 0 18px currentColor; } }
+@keyframes earth-float { 0%,100% { transform:translateZ(75px) translateY(0) rotateZ(-1deg); } 50% { transform:translateZ(92px) translateY(-12px) rotateZ(2deg); } }
+@keyframes earth-rotate { to { background-position:118% 0; } }
+@keyframes earth-satellite { 0%,100% { transform:translateX(-105px); opacity:.35; } 50% { transform:translateX(105px); opacity:1; } }
+
+@media (prefers-reduced-motion:reduce) {
+  .motion-reveal,.motion-reveal.is-visible { opacity:1; transform:none; filter:none; }
+  .topbar,.hero-copy-new .eyebrow,.hero-copy-new h1,.hero-lede,.hero-actions,.hero-strip,.hero-side,.signal-card-top,.signal-card-bottom,.scene-aura,.contact-glow,.footer-light,.eyebrow span,.footer-invite p span,.scene-earth,.earth-surface,.earth-ring::after { animation:none!important; }
+}
