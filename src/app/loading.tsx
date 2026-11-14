@@ -1,7 +1,10 @@
+'use client'
+
+import ErrorCard from '@components/ErrorCard'
+import { content } from '@/data/content'
+import { useLanguage } from '@/components/LanguageProvider'
+
 export default function Loading() {
-  return (
-    <div className="flex items-center justify-center min-h-screen">
-      <p className="text-gray-500 animate-pulse">Loading...</p>
-    </div>
-  )
+  const { language } = useLanguage()
+  return <ErrorCard hand={content[language].errors.loading} />
 }

@@ -1,8 +1,16 @@
 'use client'
 
 import { useEffect } from 'react'
+import ErrorCard, { errorBtn } from '@components/ErrorCard'
+import { content } from '@/data/content'
+import { useLanguage } from '@/components/LanguageProvider'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => { console.error('Route error recovered.', { message: error.message, digest: error.digest }) }, [error])
-  return <section className="safe-error"><p>ROUTE UNAVAILABLE</p><h1>That signal got lost in transit.</h1><span>Nothing was changed. You can safely try this page again.</span><button onClick={reset}>TRY AGAIN</button></section>
+  const t = content[useLanguage().language].errors
+  return (
+    <ErrorCard hand={t.hand} title={t.errorTitle}>
+      <button onClick={reset} className={errorBtn}>{t.errorBtn}</button>
+    </ErrorCard>
+  )
 }

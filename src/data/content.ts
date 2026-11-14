@@ -92,7 +92,14 @@ const en = {
     error: 'Your message could not be sent. Please try again.',
   },
   footer: { madeIn: 'made in Phrae' },
-  errors: {},
+  errors: {
+    hand: 'Oops.',
+    notFoundTitle: 'This page wandered off.',
+    notFoundBtn: 'Back home',
+    errorTitle: 'Something broke on this page.',
+    errorBtn: 'Try again',
+    loading: 'One moment...',
+  },
 }
 
 export type Copy = typeof en
@@ -186,7 +193,14 @@ const th: Copy = {
     error: 'ส่งข้อความไม่สำเร็จ ลองใหม่อีกครั้งได้เลย',
   },
   footer: { madeIn: 'ทำที่แพร่' },
-  errors: {},
+  errors: {
+    hand: 'อุ๊ปส์',
+    notFoundTitle: 'หน้านี้หลงทางไปแล้ว',
+    notFoundBtn: 'กลับหน้าแรก',
+    errorTitle: 'หน้านี้มีบางอย่างผิดพลาด',
+    errorBtn: 'ลองอีกครั้ง',
+    loading: 'รอสักครู่นะ...',
+  },
 }
 
 export const content: Record<Lang, Copy> = { en, th }

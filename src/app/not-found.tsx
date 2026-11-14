@@ -1,20 +1,12 @@
 import Link from 'next/link'
+import ErrorCard, { errorBtn } from '@components/ErrorCard'
+import { content } from '@/data/content'
 
 export default function NotFound() {
+  const t = content.en.errors
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen gap-4 text-center">
-      <h1 className="text-5xl font-bold">404</h1>
-
-      <p className="text-gray-500 dark:text-gray-400">
-        Sorry, the page you are looking for does not exist.
-      </p>
-
-      <Link
-        href="/"
-        className="px-6 py-2 text-white transition bg-black rounded-xl hover:opacity-80 dark:bg-white dark:text-black"
-      >
-        Go back home
-      </Link>
-    </div>
+    <ErrorCard hand={t.hand} title={t.notFoundTitle}>
+      <Link href="/" className={errorBtn}>{t.notFoundBtn}</Link>
+    </ErrorCard>
   )
 }
