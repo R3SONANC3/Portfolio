@@ -5,7 +5,7 @@ import { useLanguage } from '@/components/LanguageProvider'
 import { content } from '@/data/content'
 import { fieldNotes } from '@/data/notes'
 
-// Text between backticks becomes inline <code>.
+// Text between backticks becomes inline <code>; backticks in the data must be paired.
 function Rich({ text }: { text: string }) {
   return text.split('`').map((part, i) =>
     i % 2 ? (
@@ -41,7 +41,7 @@ export default function Notes() {
           return (
             <li
               key={n.id}
-              className={`relative min-w-0 rounded-xl border-2 border-ink bg-white p-5 pt-6${
+              className={`relative min-w-0 rounded-xl border-2 border-ink bg-white p-5 pt-6 ${
                 i % 2 ? 'motion-safe:rotate-[1deg]' : 'motion-safe:rotate-[-1deg]'
               }`}
             >
