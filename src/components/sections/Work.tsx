@@ -16,12 +16,12 @@ function Links({ p, t }: { p: Project; t: Copy }) {
   return (
     <div className="mt-auto flex flex-wrap gap-x-4 gap-y-1 pt-3">
       {p.live && (
-        <a href={p.live} target="_blank" rel="noopener noreferrer" className={linkCls}>
+        <a href={p.live} aria-label={`${t.visit}: ${p.title}`} target="_blank" rel="noopener noreferrer" className={linkCls}>
           {t.visit} <ArrowUpRight size={16} aria-hidden />
         </a>
       )}
       {p.github && (
-        <a href={p.github} target="_blank" rel="noopener noreferrer" className={linkCls}>
+        <a href={p.github} aria-label={`${t.code}: ${p.title}`} target="_blank" rel="noopener noreferrer" className={linkCls}>
           {t.code} <ArrowUpRight size={16} aria-hidden />
         </a>
       )}
@@ -42,38 +42,33 @@ function Box({ children, sub, api }: { children: React.ReactNode; sub?: string; 
   )
 }
 
-function Arrow({ wide = '→' }: { wide?: string }) {
+function Arrow() {
   return (
-    <span aria-hidden className="text-sm font-bold">
-      <span className="md:hidden">↓</span>
-      <span className="hidden md:inline">{wide}</span>
+    <span aria-hidden className="text-lg font-bold leading-none">
+      <span className="lg:hidden">↓</span>
+      <span className="hidden lg:inline">→</span>
     </span>
   )
 }
 
-const row = 'flex flex-col items-center gap-1 md:flex-row md:justify-center md:gap-2'
+const group = 'flex flex-col items-stretch gap-2'
 
+// API is the single hub: inputs -> API -> outputs. Vertical stack until lg.
 function Architecture({ alt }: { alt: string }) {
   return (
-    <div role="img" aria-label={alt} className="grid content-center gap-2.5 rounded-xl border-2 border-ink bg-[#fff8e6] p-4">
-      <div aria-hidden className="contents">
-        <div className={row}>
+    <div role="img" aria-label={alt} className="rounded-xl border-2 border-ink bg-[#fff8e6] p-4">
+      <div aria-hidden className="flex flex-col items-center gap-2 lg:flex-row lg:justify-center lg:gap-2">
+        <div className={group}>
           <Box sub="Electron">POS</Box>
-          <Arrow />
-          <Box api sub="Node · Express">
-            API
-          </Box>
-          <Arrow />
-          <Box>SQL Server</Box>
-        </div>
-        <div className={row}>
           <Box sub="Next.js">Admin</Box>
-          <Arrow wide="↗" />
-          <span className="text-xs font-semibold">API</span>
         </div>
-        <div className={row}>
-          <span className="text-xs font-semibold">API</span>
-          <Arrow />
+        <Arrow />
+        <Box api sub="Node · Express">
+          API
+        </Box>
+        <Arrow />
+        <div className={group}>
+          <Box>SQL Server</Box>
           <Box>SAP Business One</Box>
           <Box>Bank API</Box>
         </div>
