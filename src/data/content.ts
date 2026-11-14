@@ -28,7 +28,25 @@ const en = {
       'Architecture: the POS desktop app (Electron) and the Admin web app (Next.js) talk to the API (Node/Express), which stores data in SQL Server and integrates with SAP Business One and the bank API.',
   },
   experience: { kicker: 'ที่ที่เคยทำงาน', title: 'Experience' },
-  notes: {},
+  notes: {
+    kicker: 'เรื่องที่เคยแก้',
+    title: 'Notes from the field',
+    intro:
+      "I keep web and API services running on Docker inside a public health agency's closed, on-prem network. I start from logs and evidence, and I fix things in ways that can be rolled back.",
+    symptom: 'Symptom',
+    cause: 'Cause',
+    found: 'How I found it',
+    fix: 'Fix',
+    lesson: 'Lesson',
+    howTitle: 'How I work',
+    how: [
+      'Evidence first: logs, responses and the real files, no guessing.',
+      'Small, reversible fixes: a workaround first, then propose the permanent one.',
+      'Admit when a hypothesis is wrong, then change course with the new evidence.',
+      'Have someone review before touching production, especially the DB and certificates.',
+      'Protect secrets: no passwords or keys in logs, screenshots or chats.',
+    ],
+  },
   about: {
     kicker: 'ตัวตนนิดนึง',
     title: 'About me',
@@ -84,7 +102,25 @@ const th: Copy = {
       'โครงสร้างระบบ: แอป POS บนเดสก์ท็อป (Electron) และเว็บ Admin (Next.js) เชื่อมกับ API (Node/Express) ซึ่งเก็บข้อมูลใน SQL Server และเชื่อมต่อกับ SAP Business One และ API ของธนาคาร',
   },
   experience: { kicker: "where I've worked", title: 'ประสบการณ์ทำงาน' },
-  notes: {},
+  notes: {
+    kicker: "things I've fixed",
+    title: 'บันทึกจากหน้างาน',
+    intro:
+      'ผมดูแลระบบเว็บและ API ที่รันบน Docker ในเครือข่ายปิด (on-prem) ของหน่วยงานสาธารณสุข ถนัดหาสาเหตุจาก log และหลักฐาน แล้วแก้ในแบบที่ย้อนกลับได้',
+    symptom: 'อาการ',
+    cause: 'สาเหตุ',
+    found: 'วิธีหา',
+    fix: 'วิธีแก้',
+    lesson: 'สิ่งที่ได้เรียนรู้',
+    howTitle: 'วิธีทำงานของผม',
+    how: [
+      'ดูหลักฐานก่อน: log, response และไฟล์จริง ไม่เดา',
+      'แก้ให้เล็กและย้อนกลับได้: ทำ workaround ก่อน แล้วค่อยเสนอทางถาวร',
+      'ยอมรับเมื่อสมมติฐานผิด แล้วเปลี่ยนตามหลักฐานใหม่',
+      'ให้คนตรวจก่อนแก้ระบบจริง โดยเฉพาะ DB และ certificate',
+      'ปกป้องความลับ: ไม่ปล่อย password หรือ key ออกไปใน log, screenshot หรือแชท',
+    ],
+  },
   about: {
     kicker: 'a bit about me',
     title: 'เกี่ยวกับผม',
