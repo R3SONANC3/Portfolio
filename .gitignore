@@ -44,3 +44,4 @@ next-env.d.ts
 /.*/skills/
 /.github/prompts/
 /.kiro/steering/
+.superpowers/
