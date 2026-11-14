@@ -31,7 +31,7 @@ export default function Hero() {
           </a>
           <a
             href={`mailto:${EMAIL}`}
-            className="inline-block break-all rounded-full border-2 border-ink px-[18px] py-2.5 text-sm font-semibold"
+            className="inline-block break-words rounded-full border-2 border-ink px-[18px] py-2.5 text-sm font-semibold"
           >
             {EMAIL}
           </a>
