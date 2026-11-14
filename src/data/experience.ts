@@ -1,7 +1,13 @@
 export const experience = [
     {
         id: 'freelance-2026',
-        title: 'Web Developer & Mobile Developer',
+        shortDuration: 'Feb – Mar 2026',
+        shortCompany: 'Freelance',
+        summary:
+            'Built a responsive dashboard with React, NestJS and TypeScript, plus cross-platform Flutter apps. Gathered requirements with clients, tested and tuned performance.',
+        summaryTh:
+            'สร้างแดชบอร์ดแบบ responsive ด้วย React, NestJS และ TypeScript รวมถึงแอปมือถือข้ามแพลตฟอร์มด้วย Flutter คุยรวบรวมความต้องการกับลูกค้า ทดสอบ และปรับปรุงประสิทธิภาพ',
+        title: 'Web & Mobile Developer',
         company: 'Freelance',
         duration: 'Feb 2026 - Mar 2026',
         description:
@@ -16,6 +22,12 @@ export const experience = [
     },
     {
         id: 'easy-rice-2025',
+        shortDuration: 'Apr – Jun 2025',
+        shortCompany: 'Easy Rice Digital Technology',
+        summary:
+            'Customized ERPNext / Frappe for business features, maintained company websites and CMS, debugged and tested.',
+        summaryTh:
+            'ปรับแต่ง ERPNext / Frappe เพื่อรองรับฟีเจอร์ทางธุรกิจ ดูแลเว็บไซต์และ CMS ของบริษัท พร้อมดีบักและทดสอบ',
         title: 'Full Stack Developer Intern',
         company: 'EASY RICE DIGITAL TECHNOLOGY CO.',
         duration: 'Apr 2025 - Jun 2025',
@@ -31,6 +43,12 @@ export const experience = [
     },
     {
         id: 'freelance-2024',
+        shortDuration: 'Mar – Jul 2024',
+        shortCompany: 'Freelance',
+        summary:
+            'React apps, normalized MySQL schemas, REST APIs, deployed with Docker on AWS EC2.',
+        summaryTh:
+            'พัฒนาแอปด้วย React ออกแบบฐานข้อมูล MySQL แบบ normalize สร้าง REST API และ deploy ด้วย Docker บน AWS EC2',
         title: 'Full Stack Developer',
         company: 'Freelance',
         duration: 'Mar 2024 - Jul 2024',

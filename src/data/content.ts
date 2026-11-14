@@ -27,9 +27,28 @@ const en = {
     archAlt:
       'Architecture: the POS desktop app (Electron) and the Admin web app (Next.js) talk to the API (Node/Express), which stores data in SQL Server and integrates with SAP Business One and the bank API.',
   },
-  experience: {},
+  experience: { kicker: 'ที่ที่เคยทำงาน', title: 'Experience' },
   notes: {},
-  about: {},
+  about: {
+    kicker: 'ตัวตนนิดนึง',
+    title: 'About me',
+    // TODO(Jeerapat): replace with your own words
+    body: [
+      'I studied Computer Engineering and I like ideas that are ambitious but practical. My favorite part of the job is turning a messy requirement into a screen someone can use on day one.',
+      "Off the keyboard I play guitar, which is mostly practice in patience and doing small things over and over until they sound right. Turns out that's also how I debug.",
+    ],
+    groups: [
+      { name: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'Tailwind', 'Redux', 'Ant Design', 'Flutter', 'Electron'] },
+      { name: 'Backend & data', items: ['Node.js', 'NestJS', 'Express', 'Prisma', 'Sequelize', 'MySQL', 'SQL Server'] },
+      { name: 'Integrations', items: ['SAP Business One', 'Bank payment API', 'Cron jobs'] },
+      {
+        name: 'DevOps & infra',
+        items: ['Docker', 'Docker Compose', 'Harbor', 'Traefik v3', 'HTTPS / certificates', 'Linux troubleshooting', 'Jenkins', 'AWS EC2', 'Vercel', 'Git'],
+      },
+    ],
+    degree: 'B.Eng. Computer Engineering',
+    languages: 'Thai (native) · English',
+  },
   contact: {},
   footer: { madeIn: 'made in Phrae' },
   errors: {},
@@ -64,9 +83,25 @@ const th: Copy = {
     archAlt:
       'โครงสร้างระบบ: แอป POS บนเดสก์ท็อป (Electron) และเว็บ Admin (Next.js) เชื่อมกับ API (Node/Express) ซึ่งเก็บข้อมูลใน SQL Server และเชื่อมต่อกับ SAP Business One และ API ของธนาคาร',
   },
-  experience: {},
+  experience: { kicker: "where I've worked", title: 'ประสบการณ์ทำงาน' },
   notes: {},
-  about: {},
+  about: {
+    kicker: 'a bit about me',
+    title: 'เกี่ยวกับผม',
+    // TODO(Jeerapat): replace with your own words
+    body: [
+      'ผมเรียนวิศวกรรมคอมพิวเตอร์ และชอบไอเดียที่ทะเยอทะยานแต่ทำได้จริง ส่วนที่ชอบที่สุดของงานคือการเปลี่ยนความต้องการที่ยังสะเปะสะปะให้เป็นหน้าจอที่คนใช้งานได้ตั้งแต่วันแรก',
+      'นอกเวลางานผมเล่นกีตาร์ ซึ่งส่วนใหญ่คือการฝึกความอดทน ทำเรื่องเล็ก ๆ ซ้ำแล้วซ้ำอีกจนเสียงออกมาถูกต้อง ซึ่งก็เป็นวิธีเดียวกับที่ผมดีบักโค้ดเหมือนกัน',
+    ],
+    groups: [
+      { name: 'ฟรอนต์เอนด์', items: en.about.groups[0].items },
+      { name: 'แบ็กเอนด์และข้อมูล', items: en.about.groups[1].items },
+      { name: 'การเชื่อมต่อระบบ', items: en.about.groups[2].items },
+      { name: 'DevOps และโครงสร้างพื้นฐาน', items: en.about.groups[3].items },
+    ],
+    degree: 'ปริญญาตรี วิศวกรรมคอมพิวเตอร์',
+    languages: 'ไทย (ภาษาแม่) · English',
+  },
   contact: {},
   footer: { madeIn: 'ทำที่แพร่' },
   errors: {},
