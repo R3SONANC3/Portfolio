@@ -6,5 +6,5 @@ import { useLanguage } from '@/components/LanguageProvider'
 
 export default function Loading() {
   const { language } = useLanguage()
-  return <ErrorCard hand={content[language].errors.loading} />
+  return <ErrorCard as="div" hand={content[language].errors.loading} />
 }
